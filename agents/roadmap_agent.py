@@ -2,7 +2,7 @@ from google.adk.agent import Agent
 
 class RoadmapAgent(Agent):
     def __init__(self):
-        super().__init__(enable_llm=True)
+        super().__init__(config={"llm": True})  # ✅ Enables Gemini/LLM
 
     def run(self, career=None, **kwargs):
         if not career:
@@ -15,8 +15,8 @@ Give a step-by-step roadmap (in 5-7 points) for becoming a successful {career}.
 Include skills to learn, projects to build, certifications or degrees, and job preparation advice.
 Format the steps with bullet points.
 """
-
         roadmap = self.llm(prompt)
         return {
             "roadmap": roadmap
         }
+

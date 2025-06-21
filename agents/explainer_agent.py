@@ -2,7 +2,7 @@ from google.adk.agent import Agent
 
 class ExplainerAgent(Agent):
     def __init__(self):
-        super().__init__(enable_llm=True)  # 👈 This enables Gemini/LLM support
+        super().__init__(config={"llm": True})  # ✅ Enables Gemini/LLM
 
     def run(self, career=None, interest=None, strength=None, gpa=None, name=None, **kwargs):
         if not all([career, interest, strength, gpa]):
@@ -20,13 +20,10 @@ Write a short, encouraging explanation (3–5 sentences) about why this career i
 considering their background and strengths.
 Avoid generic answers. Be specific and human-like.
 """
-
         explanation = self.llm(prompt)
         return {
             "explanation": explanation
         }
-
-
 
 
 
