@@ -11,5 +11,9 @@ def get_gemini_model():
             "GEMINI_API_KEY not found in environment variables. "
             "Please create a .env file with your Gemini API key: GEMINI_API_KEY=your_api_key_here"
         )
-    genai.configure(api_key=api_key)
-    return genai.GenerativeModel("gemini-1.5-flash")
+    
+    try:
+        genai.configure(api_key=api_key)
+        return genai.GenerativeModel("gemini-1.5-flash")
+    except Exception as e:
+        raise ValueError(f"Failed to configure Gemini model: {e}. Please check your API key.")
