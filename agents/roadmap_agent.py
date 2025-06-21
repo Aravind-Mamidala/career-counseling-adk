@@ -1,10 +1,6 @@
 from google.adk.agent import Agent
 
 class RoadmapAgent(Agent):
-    def __init__(self):
-        super().__init__()
-        self.llm = self.get_tool("llm")  # ✅ Manually fetch Gemini tool
-
     def run(self, career=None, **kwargs):
         if not career:
             return {"roadmap": "No roadmap available."}
@@ -12,12 +8,10 @@ class RoadmapAgent(Agent):
         prompt = f"""
 You are a career roadmap planner bot.
 
-Give a step-by-step roadmap (in 5–7 points) for becoming a successful {career}.
+Give a step-by-step roadmap (5–7 points) for becoming a successful {career}.
 Include skills to learn, projects to build, certifications or degrees, and job preparation advice.
 Format the steps with bullet points.
 """
 
-        roadmap = self.llm(prompt)
-        return {
-            "roadmap": roadmap
-        }
+        roadmap = self.tools["llm"](prompt)  # ✅ Use tools dict directly
+        return {"roadmap": roadmap}

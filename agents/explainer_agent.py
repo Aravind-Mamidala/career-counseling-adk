@@ -1,15 +1,9 @@
 from google.adk.agent import Agent
 
 class ExplainerAgent(Agent):
-    def __init__(self):
-        super().__init__()
-        self.llm = self.get_tool("llm")  # ✅ Manually fetch Gemini tool
-
     def run(self, career=None, interest=None, strength=None, gpa=None, name=None, **kwargs):
         if not all([career, interest, strength, gpa]):
-            return {
-                "explanation": "Insufficient information to generate an explanation."
-            }
+            return {"explanation": "Insufficient information to generate an explanation."}
 
         prompt = f"""
 You are a helpful career guidance assistant.
@@ -17,15 +11,14 @@ You are a helpful career guidance assistant.
 A student named {name} is interested in {interest} and strong in {strength}, with a GPA of {gpa}. 
 You have recommended the career path: {career}.
 
-Write a short, encouraging explanation (3–5 sentences) about why this career is a good match for them, 
-considering their background and strengths.
+Write a short, encouraging explanation (3–5 sentences) about why this career is a good match for them. 
 Avoid generic answers. Be specific and human-like.
 """
 
-        explanation = self.llm(prompt)
-        return {
-            "explanation": explanation
-        }
+        # ✅ NEW: Use self.tools["llm"] instead of self.llm
+        explanation = self.tools["llm"](prompt)
+        return {"explanation": explanation}
+
 
 
 
