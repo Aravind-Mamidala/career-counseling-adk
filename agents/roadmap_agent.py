@@ -2,7 +2,8 @@ from google.adk.agent import Agent
 
 class RoadmapAgent(Agent):
     def __init__(self):
-        super().__init__(config={"llm": True})  # ✅ Enables Gemini
+        super().__init__()
+        self.llm = self.get_tool("llm")  # ✅ Manually fetch Gemini tool
 
     def run(self, career=None, **kwargs):
         if not career:

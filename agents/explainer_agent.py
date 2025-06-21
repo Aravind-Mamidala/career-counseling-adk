@@ -2,7 +2,8 @@ from google.adk.agent import Agent
 
 class ExplainerAgent(Agent):
     def __init__(self):
-        super().__init__(config={"llm": True})  # ✅ Enables Gemini
+        super().__init__()
+        self.llm = self.get_tool("llm")  # ✅ Manually fetch Gemini tool
 
     def run(self, career=None, interest=None, strength=None, gpa=None, name=None, **kwargs):
         if not all([career, interest, strength, gpa]):
@@ -25,6 +26,7 @@ Avoid generic answers. Be specific and human-like.
         return {
             "explanation": explanation
         }
+
 
 
 
