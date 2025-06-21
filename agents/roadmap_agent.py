@@ -1,12 +1,10 @@
 from google.adk.agent import Agent
+from config import get_gemini_model
 
 class RoadmapAgent(Agent):
-
-    @property
-    def llm(self):
-        if not hasattr(self, "_llm"):
-            self._llm = self.get_tool("llm")
-        return self._llm
+    def __init__(self):
+        super().__init__()
+        self.model = get_gemini_model()
 
     def run(self, career=None, **kwargs):
         if not career:
@@ -15,12 +13,10 @@ class RoadmapAgent(Agent):
         prompt = f"""
 You are a career roadmap planner bot.
 
-Give a step-by-step roadmap (in 5-7 points) for becoming a successful {career}.
+Give a step-by-step roadmap (in 5–7 points) for becoming a successful {career}.
 Include skills to learn, projects to build, certifications or degrees, and job preparation advice.
 Format the steps with bullet points.
 """
 
-        roadmap = self.llm(prompt)
-        return {
-            "roadmap": roadmap
-        }
+        response = self.model.generate_content(prompt)
+        return {"roadmap": response.text.strip()}

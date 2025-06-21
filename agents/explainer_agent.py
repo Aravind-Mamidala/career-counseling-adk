@@ -1,12 +1,10 @@
 from google.adk.agent import Agent
+from config import get_gemini_model
 
 class ExplainerAgent(Agent):
-
-    @property
-    def llm(self):
-        if not hasattr(self, "_llm"):
-            self._llm = self.get_tool("llm")  # Load Gemini once
-        return self._llm
+    def __init__(self):
+        super().__init__()
+        self.model = get_gemini_model()  # Use Gemini directly via API
 
     def run(self, career=None, interest=None, strength=None, gpa=None, name=None, **kwargs):
         if not all([career, interest, strength, gpa]):
@@ -24,10 +22,9 @@ Write a short, encouraging explanation (3–5 sentences) about why this career i
 considering their background and strengths.
 Avoid generic answers. Be specific and human-like.
 """
-        explanation = self.llm(prompt)
-        return {
-            "explanation": explanation
-        }
+
+        response = self.model.generate_content(prompt)
+        return {"explanation": response.text.strip()}
 
 
 
