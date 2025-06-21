@@ -39,12 +39,29 @@ This is an AI-powered career counseling app built using **Google's Agent Develop
 - Streamlit
 - CSV (Data Store)
 
-
 ---
+
+## 📁 Directory Structure
+
+career-counseling-adk/
+│
+├── agents/
+│ ├── input_agent.py
+│ ├── career_agent.py
+│ ├── explainer_agent.py
+│ └── roadmap_agent.py
+│
+├── data/
+│ └── career_data.csv
+│
+├── app.py
+├── run_orchestrator.py
+├── architecture.png
+└── README.md
 
 ## 🙋 Author
 
-- **Name**: Mamidala Aravind  
+- **Name**: Mamidala Aravind
 - **GitHub**: [@Aravind-Mamidala](https://github.com/Aravind-Mamidala)
 
 ---
@@ -57,6 +74,3 @@ This is an AI-powered career counseling app built using **Google's Agent Develop
 - Gemini Pro (via Explainer/Roadmap Agents)
 
 ---
-
-## 📁 Directory Structure
-
