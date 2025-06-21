@@ -3,7 +3,7 @@ from google.adk.agent import Agent
 class RoadmapAgent(Agent):
     def __init__(self):
         super().__init__()
-        self.enable_llm()  # ✅ explicitly enable Gemini
+        self.llm = self.get_tool("llm")  # ✅ manually access Gemini LLM
 
     def run(self, career=None, **kwargs):
         if not career:
