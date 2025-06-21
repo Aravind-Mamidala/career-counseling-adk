@@ -28,7 +28,8 @@ class OrchestratorAgent:
             interest=user_data["interest"],
             strength=user_data["strength"],
             gpa=user_data["gpa"],
-            career=career_response["recommended_career"]
+            career=career_response["recommended_career"],
+            source=career_response.get("source", "unknown")
         )
 
         # Step 4: Roadmap

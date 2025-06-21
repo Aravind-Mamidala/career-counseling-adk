@@ -4,17 +4,28 @@ class ExplainerAgent:
     def __init__(self):
         self.model = get_gemini_model()
 
-    def run(self, career=None, interest=None, strength=None, gpa=None, name=None, **kwargs):
+    def run(self, career=None, interest=None, strength=None, gpa=None, name=None, source=None, **kwargs):
         if not all([career, interest, strength, gpa]):
             return {
                 "explanation": "Insufficient information to generate an explanation."
             }
 
-        prompt = f"""
+        # Customize prompt based on source
+        if source == 'gemini_suggestion':
+            prompt = f"""
 A student named {name} is interested in {interest} and strong in {strength}, with a GPA of {gpa}.
 You have recommended the career path: {career}.
 
-Write a specific, encouraging explanation (3–5 sentences) about why this career is a good match for them.
+Write a specific, encouraging explanation (3-4 sentences) about why this career is a good match for them.
+Focus on how their specific interests and strengths directly relate to this career path.
+Make it personal and motivating, avoiding generic statements.
+"""
+        else:
+            prompt = f"""
+A student named {name} is interested in {interest} and strong in {strength}, with a GPA of {gpa}.
+You have recommended the career path: {career}.
+
+Write a specific, encouraging explanation (3-4 sentences) about why this career is a good match for them.
 Avoid generic or repeated lines.
 """
 

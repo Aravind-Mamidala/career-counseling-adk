@@ -23,8 +23,8 @@ if not os.getenv("GEMINI_API_KEY"):
 
 # Input fields
 name = st.text_input("Enter your name")
-interest = st.text_input("What are you interested in? (e.g., coding, art, biology)")
-strength = st.text_input("What are you strong in? (e.g., math, writing)")
+interest = st.text_input("What are you interested in? (e.g., coding, art, biology, swimming)")
+strength = st.text_input("What are you strong in? (e.g., math, writing, running)")
 gpa = st.text_input("Enter your GPA or percentage")
 
 if st.button("Get Career Recommendation"):
@@ -41,13 +41,22 @@ if st.button("Get Career Recommendation"):
                 "gpa": gpa
             }
             
-            with st.spinner("Analyzing your profile and generating recommendations..."):
+            with st.spinner("🤖 Analyzing your profile and generating personalized recommendations..."):
                 response = orchestrator.run(user_data)
 
             st.success("🎯 Career Match Result")
             st.write(f"**Name:** {response['name']}")
             st.write(f"**Recommended Career:** {response['recommended_career']}")
             st.write(f"**Score:** {response['score']}")
+            
+            # Show source of recommendation
+            source = response.get('source', 'unknown')
+            if source == 'csv_match':
+                st.info("📊 Recommendation based on our career database")
+            elif source == 'gemini_suggestion':
+                st.info("🤖 AI-powered recommendation based on your unique profile")
+            elif source == 'fallback':
+                st.warning("⚠️ Using fallback recommendation due to technical issues")
             
             if response.get('alternatives'):
                 st.markdown("**🧭 Alternative Career Options:**")
