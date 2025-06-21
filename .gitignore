@@ -1,4 +1,9 @@
-venv/
-firebase_key.json
-firebase_key.json
-firebase_key.json
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env.*
+.idea/
+*.db
+.DS_Store
