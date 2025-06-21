@@ -17,3 +17,4 @@ firebase_key.json
 *.pkl
 *.h5
 *.db
+firebase_key.json
