@@ -13,7 +13,7 @@ Include skills to learn, projects to build, certifications or degrees, and job p
 Format the steps with bullet points.
 """
 
-        roadmap = self.llm_response(prompt)
+        roadmap = self.llm(prompt)
         return {
             "roadmap": roadmap
         }

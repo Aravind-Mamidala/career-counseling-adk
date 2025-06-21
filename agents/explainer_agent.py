@@ -18,7 +18,7 @@ considering their background and strengths.
 Avoid generic answers. Be specific and human-like.
 """
 
-        explanation = self.llm_response(prompt)
+        explanation = self.llm(prompt)
         return {
             "explanation": explanation
         }
