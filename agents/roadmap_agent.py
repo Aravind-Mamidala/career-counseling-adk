@@ -11,11 +11,7 @@ class RoadmapAgent(Agent):
             return {"roadmap": "No roadmap available."}
 
         prompt = f"""
-You are a career roadmap planner bot.
-
-Give a step-by-step roadmap (in 5–7 points) for becoming a successful {career}.
-Include skills to learn, projects to build, certifications or degrees, and job preparation advice.
-Format the steps with bullet points.
+Give a 5–7 step career roadmap for becoming a successful {career}. Include skills, projects, certifications, and job prep. Format with bullet points.
 """
 
         response = self.model.generate_content(prompt)

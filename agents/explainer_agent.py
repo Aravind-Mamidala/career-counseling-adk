@@ -4,7 +4,7 @@ from config import get_gemini_model
 class ExplainerAgent(Agent):
     def __init__(self):
         super().__init__()
-        self.model = get_gemini_model()  # Use Gemini directly via API
+        self.model = get_gemini_model()
 
     def run(self, career=None, interest=None, strength=None, gpa=None, name=None, **kwargs):
         if not all([career, interest, strength, gpa]):
@@ -13,14 +13,11 @@ class ExplainerAgent(Agent):
             }
 
         prompt = f"""
-You are a helpful career guidance assistant.
-
-A student named {name} is interested in {interest} and strong in {strength}, with a GPA of {gpa}. 
+A student named {name} is interested in {interest} and strong in {strength}, with a GPA of {gpa}.
 You have recommended the career path: {career}.
 
-Write a short, encouraging explanation (3–5 sentences) about why this career is a good match for them, 
-considering their background and strengths.
-Avoid generic answers. Be specific and human-like.
+Write a specific, encouraging explanation (3–5 sentences) about why this career is a good match for them.
+Avoid generic or repeated lines.
 """
 
         response = self.model.generate_content(prompt)
