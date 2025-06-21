@@ -1,3 +1,8 @@
+# Your existing entries
+venv/
+firebase_key.json
+
+# Add these new entries
 .env
 __pycache__/
 *.pyc
