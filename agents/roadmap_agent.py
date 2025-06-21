@@ -1,6 +1,8 @@
 from google.adk.agent import Agent
 
 class RoadmapAgent(Agent):
+    def __init__(self):
+        super().__init__()  # <-- This is the fix (calls base Agent constructor)
     def run(self, career=None, **kwargs):
         if not career:
             return {"roadmap": "No roadmap available."}

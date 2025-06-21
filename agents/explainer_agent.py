@@ -1,6 +1,8 @@
 from google.adk.agent import Agent
 
 class ExplainerAgent(Agent):
+    def __init__(self):
+        super().__init__()  # <-- This is the fix (calls base Agent constructor)
     def run(self, career=None, interest=None, strength=None, gpa=None, name=None, **kwargs):
         if not all([career, interest, strength, gpa]):
             return {
