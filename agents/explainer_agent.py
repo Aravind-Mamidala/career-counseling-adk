@@ -2,7 +2,8 @@ from google.adk.agent import Agent
 
 class ExplainerAgent(Agent):
     def __init__(self):
-        super().__init__(config={"llm": True})  # ✅ Enables Gemini/LLM
+        super().__init__()  # ✅ fallback to base init
+        self.enable_llm()   # ✅ explicitly enable Gemini
 
     def run(self, career=None, interest=None, strength=None, gpa=None, name=None, **kwargs):
         if not all([career, interest, strength, gpa]):
@@ -16,10 +17,11 @@ You are a helpful career guidance assistant.
 A student named {name} is interested in {interest} and strong in {strength}, with a GPA of {gpa}. 
 You have recommended the career path: {career}.
 
-Write a short, encouraging explanation (3–5 sentences) about why this career is a good match for them, 
+Write a short, encouraging explanation (3-5 sentences) about why this career is a good match for them, 
 considering their background and strengths.
 Avoid generic answers. Be specific and human-like.
 """
+
         explanation = self.llm(prompt)
         return {
             "explanation": explanation
