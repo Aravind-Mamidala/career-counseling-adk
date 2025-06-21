@@ -18,6 +18,7 @@ fastapi==0.115.13
 firebase-admin==6.9.0
 gitdb==4.0.12
 GitPython==3.1.44
+google-ai-generativelanguage==0.4.0
 google-api-core==2.25.1
 google-api-python-client==2.173.0
 google-auth==2.40.3
@@ -35,13 +36,15 @@ google-cloud-speech==2.33.0
 google-cloud-storage==2.19.0
 google-cloud-trace==1.16.2
 google-crc32c==1.7.1
+google-genai==1.21.1
+google-generativeai==0.8.5
 google-resumable-media==2.7.2
 googleapis-common-protos==1.70.0
 graphviz==0.21
 greenlet==3.2.3
 grpc-google-iam-v1==0.14.2
 grpcio==1.73.0
-grpcio-status==1.73.0
+grpcio-status==1.62.3
 h11==0.16.0
 h2==4.2.0
 hpack==4.1.0
@@ -69,7 +72,7 @@ packaging==25.0
 pandas==2.3.0
 pillow==11.2.1
 proto-plus==1.26.1
-protobuf==6.31.1
+protobuf==4.25.8
 pyarrow==20.0.0
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
@@ -100,6 +103,7 @@ streamlit==1.46.0
 tenacity==8.5.0
 toml==0.10.2
 tornado==6.5.1
+tqdm==4.67.1
 typing-inspection==0.4.1
 typing_extensions==4.14.0
 tzdata==2025.2
@@ -110,5 +114,3 @@ uvicorn==0.34.3
 watchdog==6.0.0
 websockets==15.0.1
 zipp==3.23.0
-google-generativeai==1.21.1
-
