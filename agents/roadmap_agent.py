@@ -1,9 +1,7 @@
-from google.adk.agent import Agent
 from config import get_gemini_model
 
-class RoadmapAgent(Agent):
+class RoadmapAgent:
     def __init__(self):
-        super().__init__()
         self.model = get_gemini_model()
 
     def run(self, career=None, **kwargs):

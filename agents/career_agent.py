@@ -1,7 +1,6 @@
-from google.adk.agent import Agent
 import csv
 
-class CareerRecommenderAgent(Agent):
+class CareerRecommenderAgent:
     def run(self, name=None, interest=None, strength=None, gpa=None, **kwargs):
         if isinstance(gpa, str):
             gpa = gpa.strip()

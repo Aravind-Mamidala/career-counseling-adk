@@ -1,5 +1,5 @@
-from google.adk.agent import Agent
-import json  # Add this at the top if not already
+import json
+
 class InputCollectorAgent:
     def run(self, input_data):  # Accept input_data from Streamlit
         return {
