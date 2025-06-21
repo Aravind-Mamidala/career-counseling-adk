@@ -110,5 +110,5 @@ uvicorn==0.34.3
 watchdog==6.0.0
 websockets==15.0.1
 zipp==3.23.0
-google-generativeai
+google-generativeai==0.3.2
 
