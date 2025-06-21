@@ -2,6 +2,10 @@ import streamlit as st
 from agents.orchestrator_agent import OrchestratorAgent
 import os
 
+# Clear cache to ensure fresh code is loaded
+st.cache_data.clear()
+st.cache_resource.clear()
+
 st.set_page_config(page_title="Career Counselor", page_icon="🎓")
 
 st.title("🎓 Career Counseling Assistant")
@@ -70,6 +74,10 @@ if st.button("Get Career Recommendation"):
             if response.get("roadmap"):
                 st.markdown("**🗺️ Career Roadmap:**")
                 st.info(response['roadmap'])
+
+            # Debug section (can be removed later)
+            with st.expander("🔧 Debug Info"):
+                st.json(response)
 
         except ValueError as e:
             st.error(f"❌ Configuration Error: {e}")
