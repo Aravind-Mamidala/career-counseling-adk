@@ -1,21 +1,28 @@
 from google.adk.agent import Agent
 
 class ExplainerAgent(Agent):
-    def run(self, career=None, interest=None, strength=None, gpa=None, **kwargs):
+    def run(self, career=None, interest=None, strength=None, gpa=None, name=None, **kwargs):
         if not all([career, interest, strength, gpa]):
             return {
                 "explanation": "Insufficient information to generate an explanation."
             }
 
-        explanation = (
-            f"Based on your interest in {interest} and strength in {strength}, "
-            f"along with a score of {gpa}, the career path '{career}' is recommended "
-            f"because it aligns with both your passion and capabilities."
-        )
+        prompt = f"""
+You are a helpful career guidance assistant.
 
+A student named {name} is interested in {interest} and strong in {strength}, with a GPA of {gpa}. 
+You have recommended the career path: {career}.
+
+Write a short, encouraging explanation (3–5 sentences) about why this career is a good match for them, 
+considering their background and strengths.
+Avoid generic answers. Be specific and human-like.
+"""
+
+        explanation = self.llm_response(prompt)
         return {
             "explanation": explanation
         }
+
 
 
 
